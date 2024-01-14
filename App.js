@@ -1,12 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import  LoginScreen  from './App/Screen/LoginScreen.js';
+import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'outfit': require('./assets/fonts/Outfit-Regular.ttf'),
+    'outfit-bold': require('./assets/fonts/Outfit-Bold.ttf'),
+  });
   return (
+    <ClerkProvider publishableKey='pk_test_cG9ldGljLW11c2tyYXQtNzQuY2xlcmsuYWNjb3VudHMuZGV2JA'>
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <SignedIn><Text>Has iniciado sesión</Text></SignedIn>
+      <SignedOut><LoginScreen/></SignedOut>
     </View>
+    </ClerkProvider>
   );
 }
 
@@ -14,7 +22,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
