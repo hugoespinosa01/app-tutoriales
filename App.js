@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useFonts } from 'expo-font';
 import  LoginScreen  from './App/Screen/LoginScreen.js';
 import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';

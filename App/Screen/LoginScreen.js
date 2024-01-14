@@ -5,9 +5,11 @@ import Colors from "../Utils/Colors";
 import google from "../../assets/images/google.png";
 import * as WebBrowser from "expo-web-browser";
 WebBrowser.maybeCompleteAuthSession();
-import { useOAuth, useWarmUpBrowser } from "@clerk/clerk-react";
+import { useOAuth } from "@clerk/clerk-expo";
+import {useWarmUpBrowser} from '../../hooks/warmUpBrowser';
 
 export default function LoginScreen() {
+    
     useWarmUpBrowser();
  
     const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
