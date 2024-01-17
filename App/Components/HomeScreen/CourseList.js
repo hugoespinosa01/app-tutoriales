@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import SubHeading from "../SubHeading";
 import CourseItem from "./CourseItem";
 import {useNavigation} from '@react-navigation/native';
+import Colors from "../../Utils/Colors";
 
 export default function CourseList({ level }) {
   const [courseList, setCourseList] = React.useState([]);
@@ -19,8 +20,8 @@ export default function CourseList({ level }) {
   return (
     <View>
       <SubHeading
-        text={"Cursos" + level}
-        color={level === "Básicos" && Colors.WHITE}
+        text={"Cursos " + level}
+        color={level === "básicos" && Colors.WHITE}
       ></SubHeading>
       <FlatList
         data={courseList}

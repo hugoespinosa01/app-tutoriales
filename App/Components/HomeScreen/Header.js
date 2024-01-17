@@ -14,7 +14,7 @@ export default function Header() {
             <Image source={{uri:user?.imageUrl}}
             style={{width:50,height:50,borderRadius:99}} />
             <View>
-                <Text style={styles.mainHeader}>Welcome,</Text>
+                <Text style={styles.mainHeader}>Bienvenido, </Text>
                 <Text style={styles.mainHeader}>{user?.fullName}</Text>
             </View>
         </View>
@@ -28,7 +28,7 @@ export default function Header() {
     borderRadius:99,
     marginTop:25,
     display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-        <TextInput placeholder='Search Courses' 
+        <TextInput placeholder='Buscar cursos' 
         style={{fontFamily:'outfit',fontSize:18}}/>
         <Ionicons name="search-circle" size={50} color={Colors.PRIMARY} />
     </View>
