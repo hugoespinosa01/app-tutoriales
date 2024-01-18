@@ -16,7 +16,8 @@ export default function CourseList({ level }) {
 
   const getCourses = () => {
     getCourseList(level).then(resp => {
-      setCourseList(resp?.courses);
+      console.log("RESP--",resp)
+       setCourseList(resp?.courses);
     })
   };
 
@@ -33,8 +34,9 @@ export default function CourseList({ level }) {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => 
-            navigation.navigate('course-detail')
-          }>
+            navigation.navigate('course-detail',{
+              course:item
+            })}>
             <CourseItem item={item} />
           </TouchableOpacity>
         )}
