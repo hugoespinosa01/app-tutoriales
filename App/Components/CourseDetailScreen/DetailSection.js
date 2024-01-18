@@ -45,7 +45,7 @@ lineHeight:23}}>{course?.description?.markdown}</Text>
             <Text style={{fontFamily:'outfit',
             color:Colors.WHITE,textAlign:'center',fontSize:17}}>Inscribirse gratis</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{padding:15,backgroundColor:Colors.SECUNDARY,
+        <TouchableOpacity style={{padding:15,backgroundColor:Colors.SECONDARY,
         borderTopEndRadius:15}}>
             <Text style={{fontFamily:'outfit',
             color:Colors.WHITE,textAlign:'center',fontSize:17}}>Membresia $2.99/Mes</Text>
