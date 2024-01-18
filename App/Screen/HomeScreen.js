@@ -12,9 +12,9 @@ export default function HomeScreen() {
       </View>
       <View style={{padding: 20}}>
         <View style={{marginTop: -90}}>
-        <CourseList level={'básicos'}></CourseList>
+        <CourseList level={'Principiante'}></CourseList>
         </View>
-        <CourseList level={'avanzados'}></CourseList>
+        <CourseList level={'Avanzando'}></CourseList>
       </View>
     </View>
   )

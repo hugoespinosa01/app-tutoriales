@@ -23,8 +23,8 @@ export default function CourseList({ level }) {
   return (
     <View>
       <SubHeading
-        text={"Cursos " + level}
-        color={level === "básicos" && Colors.WHITE}
+        text={level}
+        color={level === "Principiante" && Colors.WHITE}
       ></SubHeading>
       <FlatList
         data={courseList}
