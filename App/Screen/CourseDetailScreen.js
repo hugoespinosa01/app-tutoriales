@@ -3,7 +3,7 @@ import { enrollCourse } from '../Services'
 import { getUserEnrolledCourse } from '../Services'
 import { useUser } from '@clerk/clerk-expo'
 import { useRoute } from '@react-navigation/native'
-import React, {useEffect} from 'react'
+import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,26 +13,21 @@ import ChapterSection from '../Components/CourseDetailScreen/ChapterSection';
 export default function CourseDetailScreen() {
   
   const {user} = useUser();
-  const [userEnrollCourse, setUserEnrolledCourse] = React.useState(false);
-
+  const [userEnrolledCourse, setUserEnrolledCourse] = React.useState([]);
   const navigate=useNavigation();
-  const params=useRoute().params;
-  useEffect(()=>{
-    console.log(params.course)
-  },[params.course])
-
+  const params = useRoute().params;
+  
   React.useEffect(() => {
-    console.log(params?.course.id);
     if(user && params?.course){
       GetUserEnrolledCourse();
     }
-  }, []);
+  }, [params.course, user]);
 
   const UserEnrollCourse = () => {
     enrollCourse(params?.course.id, user?.primaryEmailAddress?.emailAddress)
     .then(res => {
-      console.log(res);
       if(res){
+        console.log("Enrolled Successfully");
         ToastAndroid.show("Enrolled Successfully", ToastAndroid.LONG);
         GetUserEnrolledCourse();
       }
@@ -40,8 +35,8 @@ export default function CourseDetailScreen() {
   }
 
   const GetUserEnrolledCourse = () => {
-    getUserEnrolledCourse(user.id, user.primaryEmailAddress.emailAddress)
-    .then(res => {
+    getUserEnrolledCourse(params.course.id, user.primaryEmailAddress.emailAddress)
+    .then((res) => {
       setUserEnrolledCourse(res.userEnrolledCourses);
     })
   }
@@ -52,9 +47,13 @@ export default function CourseDetailScreen() {
       <Ionicons name="arrow-back-circle"
        size={40} color="black" />
        </TouchableOpacity>
-       <DetailSection course={params.course} enrollCourse={()=>(UserEnrollCourse)}/>
-      <ChapterSection chapterList={params.course.chapters}/>
+       <DetailSection 
+            course={params.course}
+            userEnrolledCourse = {userEnrolledCourse}
+            enrollCourse={UserEnrollCourse}/>
+      <ChapterSection chapterList={params?.course?.chapters}/>
     </ScrollView>
+
     
   )
 }

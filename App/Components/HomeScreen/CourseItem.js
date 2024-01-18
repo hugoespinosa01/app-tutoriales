@@ -54,7 +54,7 @@ export default function CourseItem({item}) {
           <Text>{item?.time}</Text>
         </View>
       </View>
-      <Text style={{marginTop:5, color: Colors.PRIMARY, fontFamily: 'outfit-medium'}}>{item.free == 0 ? 'Free' : item.price}</Text>
+      <Text style={{marginTop:5, color: Colors.PRIMARY, fontFamily: 'outfit-medium'}}>{item.free === 0 ? 'Gratis' : item.price}</Text>
     </View>
   </View>
   )

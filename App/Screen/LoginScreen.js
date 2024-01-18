@@ -53,7 +53,7 @@ export default function LoginScreen() {
             fontFamily: "outfit-bold",
           }}
         >
-          CODEBOX
+          DEV ACADEMY
         </Text>
         <Text
           style={{
