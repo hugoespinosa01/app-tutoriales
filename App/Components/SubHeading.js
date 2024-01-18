@@ -7,8 +7,10 @@ export default function SubHeading({text, color=Colors.BLACK}) {
 <View>
     <Text style={{
         fontSize: 24,
-        fontWeight: 'outfit-bold',
-        color: color
+        fontFamily: 'outfit-medium',
+        color: color,
+        marginTop:10,
+        marginBottom: 10
     }}>
         {text}
     </Text>

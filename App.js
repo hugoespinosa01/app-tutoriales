@@ -8,6 +8,7 @@ import TabNavigation from './App/Navigations/TabNavigation.js';
 export default function App() {
   const [fontsLoaded] = useFonts({
     'outfit': require('./assets/fonts/Outfit-Regular.ttf'),
+    'outfit-medium': require('./assets/fonts/Outfit-SemiBold.ttf'),
     'outfit-bold': require('./assets/fonts/Outfit-Bold.ttf'),
   });
   return (
