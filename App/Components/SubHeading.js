@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import Colors from '../Utils/Colors'
+import Colors from '../Utils/Colors.js'
 
 export default function SubHeading({text, color=Colors.BLACK}) {
   return (

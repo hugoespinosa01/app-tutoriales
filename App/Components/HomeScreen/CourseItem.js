@@ -1,6 +1,7 @@
 import { View, Text, Image} from 'react-native'
 import React from 'react'
-import Ionicons from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import Colors from '../../Utils/Colors';
 
 export default function CourseItem({item}) {
   return (
@@ -27,7 +28,6 @@ export default function CourseItem({item}) {
       </Text>
       <View
         style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}
-        
       >
         <View
           style={{
@@ -35,9 +35,10 @@ export default function CourseItem({item}) {
             alignItems: "center",
             gap: 5,
             marginTop: 5,
+            flexDirection: 'row'
           }}
         >
-          <Ionicons name="book-outline" size={24} color="black" />
+          <Ionicons name="book-outline" size={15} color="black"></Ionicons>
           <Text style={{fontFamily: 'outfit'}}>{item?.chapters?.length} Capítulos</Text>
         </View>
         <View
@@ -46,9 +47,10 @@ export default function CourseItem({item}) {
             alignItems: "center",
             gap: 5,
             marginTop: 5,
+            flexDirection: 'row'
           }}
         >
-          <Ionicons name="md-time-outline" size={24} color="black" />
+          <Ionicons name="md-time-outline" size={15} color="black" />
           <Text>{item?.time}</Text>
         </View>
       </View>

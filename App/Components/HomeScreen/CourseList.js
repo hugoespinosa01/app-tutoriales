@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import SubHeading from "../SubHeading";
 import CourseItem from "./CourseItem";
 import {useNavigation} from '@react-navigation/native';
-import Colors from "../../Utils/Colors";
+import Colors from "../../Utils/Colors.js";
+import { getCourseList } from "../../Services";
 
 export default function CourseList({ level }) {
   const [courseList, setCourseList] = React.useState([]);
@@ -14,7 +15,9 @@ export default function CourseList({ level }) {
   }, []);
 
   const getCourses = () => {
-    setCourseList([]);
+    getCourseList(level).then(resp => {
+      setCourseList(resp?.courses);
+    })
   };
 
   return (
@@ -33,7 +36,6 @@ export default function CourseList({ level }) {
             navigation.navigate('course-detail')
           }>
             <CourseItem item={item} />
-            <Stack.Screen name="Home" component={HomeScreen} />
           </TouchableOpacity>
         )}
       />
