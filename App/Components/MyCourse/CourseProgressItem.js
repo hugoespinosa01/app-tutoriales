@@ -1,11 +1,10 @@
 import React from 'react'
 import { View, Text, Image} from 'react-native'
-import React from 'react'
 import { Ionicons } from "@expo/vector-icons";
 import Colors from '../../Utils/Colors';
-import CourseProgressBar from './CourseProgressBar';
+import CourseProgressBar from '../HomeScreen/CourseProgressBar';
 
-export default function CourseProgressItem() {
+export default function CourseProgressItem({item, completedChapter}) {
     return (
         <View
         style={{

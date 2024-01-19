@@ -46,7 +46,7 @@ export default function ContentItem({ description, output }) {
         ) : null}
 
 
-        {isRun ? <> <Text style={{fontFamily: 'outfit-medium'}}>Output</Text>
+        {isRun ? <><Text style={{fontFamily: 'outfit-medium'}}>Output</Text>
           <RenderHTML
             contentWidth={width}
             source={outputSource}
