@@ -48,13 +48,7 @@ export const enrollCourse = async (courseId, userEmail) => {
     gql`
   mutation MyMutation {
     createUserEnrolledCourse(
-      data: {courseId: "` +
-    courseId +
-    `", userEmail: "` +
-    userEmail +
-    `", course: {connect: {id: "` +
-    courseId +
-    `"}}}
+      data: {courseId: "` + courseId +`", userEmail: "` +userEmail +`", course: {connect: {id: "` +courseId +`"}}}
     ) {
       id
     }
@@ -72,16 +66,16 @@ export const enrollCourse = async (courseId, userEmail) => {
   return result;
 };
 
-export const getUserEnrolledCourse = async (userId, userEmail) => {
+export const getUserEnrolledCourse = async (courseId, userEmail) => {
   const query = gql`
-    query GetUserConrolledCourse {
-      userConrolledCourses(
-        where: { courseId: `+userId+`, userEmail: `+userEmail+` }
+    query GetUserEnrolledCourse {
+      userEnrolledCourses(
+        where: { courseId: "`+courseId+`", userEmail: "`+userEmail+`" }
       ) {
         id
         courseId
-        completedCharper {
-          charperId
+        completedChapter {
+          chapterId
         }
       }
     }
