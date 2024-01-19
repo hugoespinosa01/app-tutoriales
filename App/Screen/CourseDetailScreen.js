@@ -3,41 +3,46 @@ import { enrollCourse } from '../Services'
 import { getUserEnrolledCourse } from '../Services'
 import { useUser } from '@clerk/clerk-expo'
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React ,{useContext, useEffect,useState}from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import DetailSection from '../Components/CourseDetailScreen/DetailSection';
 import ChapterSection from '../Components/CourseDetailScreen/ChapterSection';
+import { CompleteChapterContext } from '../Context/CompleteChapterContext'
 
 export default function CourseDetailScreen() {
   
   const {user} = useUser();
-  const [userEnrolledCourse, setUserEnrolledCourse] = React.useState([]);
+  const [userEnrolledCourse, setUserEnrolledCourse] = useState([]);
   const navigate=useNavigation();
   const params = useRoute().params;
-  
-  React.useEffect(() => {
+  const {ischapterComplete,setIsChapterComplete}=useContext(CompleteChapterContext);
+
+useEffect(() => {
     if(user && params?.course){
       GetUserEnrolledCourse();
     }
   }, [params.course, user]);
 
+  useEffect(() => {
+    ischapterComplete&&GetUserEnrolledCourse();
+  },[ischapterComplete])
   const UserEnrollCourse = () => {
     enrollCourse(params?.course.id, user?.primaryEmailAddress?.emailAddress)
-    .then(res => {
-      if(res){
-        console.log("Enrolled Successfully");
-        ToastAndroid.show("Enrolled Successfully", ToastAndroid.LONG);
+    .then(resp => {
+      if(resp){
+        ToastAndroid.show("Inscrito exitosamente", ToastAndroid.LONG);
         GetUserEnrolledCourse();
       }
     })
   }
+  
 
   const GetUserEnrolledCourse = () => {
     getUserEnrolledCourse(params.course.id, user.primaryEmailAddress.emailAddress)
-    .then((res) => {
-      setUserEnrolledCourse(res.userEnrolledCourses);
+    .then((resp) => {
+      setUserEnrolledCourse(resp.userEnrolledCourses);
     })
   }
   
@@ -50,7 +55,7 @@ export default function CourseDetailScreen() {
        <DetailSection 
             course={params.course}
             userEnrolledCourse = {userEnrolledCourse}
-            enrollCourse={UserEnrollCourse}/>
+            enrollCourse={()=>UserEnrollCourse()}/>
       <ChapterSection chapterList={params?.course?.chapters} userEnrolledCourse={userEnrolledCourse}/>
     </ScrollView>
 

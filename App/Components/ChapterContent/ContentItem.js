@@ -1,16 +1,11 @@
-import {
-  View,
-  Text,
-  useWindowDimensions,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
+import {View,Text,useWindowDimensions,TouchableOpacity} from "react-native";
+import React ,{useState}from "react";
 import RenderHTML from "react-native-render-html";
 import Colors from "../../Utils/Colors";
 
 export default function ContentItem({ description, output }) {
   
-  const [isRun, setRun] = React.useState(false);
+  const [isRun, setRun] = useState(false);
   const { width } = useWindowDimensions();
   const descriptionSource = {
     html: description,
@@ -31,13 +26,14 @@ export default function ContentItem({ description, output }) {
           <TouchableOpacity onPress={() => setRun(true)} style={{ marginTop: -20, marginBottom: 20 }}>
             <Text
               style={{
-                padding: 10,
+                padding: 12,
                 backgroundColor: Colors.PRIMARY,
                 borderRadius: 10,
                 fontSize: 14,
                 color: Colors.WHITE,
                 textAlign: "center",
                 width: 100,
+                fontFamily: "outfit",
               }}
             >
               Run

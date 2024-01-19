@@ -1,5 +1,5 @@
 import { View, FlatList, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SubHeading from "../SubHeading";
 import CourseItem from "./CourseItem";
 import {useNavigation} from '@react-navigation/native';
@@ -7,7 +7,7 @@ import Colors from "../../Utils/Colors.js";
 import { getCourseList } from "../../Services";
 
 export default function CourseList({ level }) {
-  const [courseList, setCourseList] = React.useState([]);
+  const [courseList, setCourseList] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function CourseList({ level }) {
   };
 
   return (
-    <View>
+    <View style={{marginTop:10}}>
       <SubHeading
         text={level}
         color={level === "Principiante" && Colors.WHITE}

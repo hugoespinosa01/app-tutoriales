@@ -1,20 +1,21 @@
 import { View, Text, FlatList, Dimensions } from "react-native";
-import React from "react";
+import React, {useState} from "react";
 import ProgressBar from "./ProgressBar";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import ContentItem from "./ContentItem";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Colors from "../../Utils/Colors";
 
-export default function Content({ content }) {
+export default function Content({ content, onChapterFinish }) {
   console.log(content[0].description);
 
   let contentRef;
   const navigation = useNavigation();
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const onNextBtnPress = (index) => {
     if (content?.length <= index + 1) {
       navigation.goBack();
+      onChapterFinish();
       return;
     }
     setActiveIndex(index + 1);
@@ -22,7 +23,7 @@ export default function Content({ content }) {
   };
 
   return (
-    <View style={{ padding: 0, height: "200%" }}>
+    <View style={{ padding: 0, height: "100%" }}>
       <ProgressBar contentLength={content?.length} contentIndex={activeIndex} />
         <FlatList
           data={content}
