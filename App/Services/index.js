@@ -119,7 +119,7 @@ export const createNewUser = async (userName, email, profileImageUrl) => {
         userName: "`+userName+`"},
         update: {email: "`+email+`",
         profileImage: 
-        "`+profileImageUrl+`", userName: "abc"}}
+        "`+profileImageUrl+`", userName: "`+userName+`"}}
       where: {email: "`+email+`"}
     ) {
       id

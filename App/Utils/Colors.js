@@ -1,8 +1,10 @@
 export default {
-    SECONDARY: '#03A9FF',
-    PRIMARY: '#5080bf',
-    LIGHT_PRIMARY: '#E3E2F3',
-    WHITE: '#FFFFFF',
-    BLACK: '#000000',
-    GRAY: '#9A9393',
+    PRIMARY:'#6857E8',
+    LIGHT_PRIMARY:'#C2BAFF',
+    WHITE:'#fff',
+    BLACK:'#000',
+    GRAY:'#8C8C8C',
+    SECONDARY:'#65CFF2',
+    GREEN:'#4CBF57',
+    LIGHT_GREEN:'#EBFFEA'
 }

@@ -7,13 +7,13 @@ export default function ProgressBar({ contentLength, contentIndex }) {
   const width = 100 / contentLength;
 
   return (
-    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 20}}>
+    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 20, marginTop:20}}>
       {arraySize.map((item, index) => (
         <View
           style={{
             flex: 1,
-            marginTop: 15,
-            backgroundColor: `${index <= contentIndex ? Colors.PRIMARY : Colors.GRAY}`,
+            backgroundColor: `${index <= contentIndex ? 
+            Colors.PRIMARY : Colors.GRAY}`,
             width: `${width}%`,
             height: 10,
             borderRadius: 10,
