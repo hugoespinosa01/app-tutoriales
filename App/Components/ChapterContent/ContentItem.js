@@ -1,10 +1,14 @@
-import {View,Text,useWindowDimensions,TouchableOpacity} from "react-native";
-import React ,{useState}from "react";
+import {
+  View,
+  Text,
+  useWindowDimensions,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
 import RenderHTML from "react-native-render-html";
 import Colors from "../../Utils/Colors";
 
 export default function ContentItem({ description, output }) {
-  
   const [isRun, setRun] = useState(false);
   const { width } = useWindowDimensions();
   const descriptionSource = {
@@ -23,7 +27,10 @@ export default function ContentItem({ description, output }) {
           tagsStyles={tagStyles}
         />
         {output != null ? (
-          <TouchableOpacity onPress={() => setRun(true)} style={{ marginTop: -20, marginBottom: 20 }}>
+          <TouchableOpacity
+            onPress={() => setRun(true)}
+            style={{ marginTop: 10, marginBottom: 10 }}
+          >
             <Text
               style={{
                 padding: 12,
@@ -41,13 +48,16 @@ export default function ContentItem({ description, output }) {
           </TouchableOpacity>
         ) : null}
 
-
-        {isRun ? <><Text style={{fontFamily: 'outfit-medium'}}>Output</Text>
-          <RenderHTML
-            contentWidth={width}
-            source={outputSource}
-            tagsStyles={outputStyles}
-          /> </> : null}
+        {isRun ? (
+          <View style={{padding: 15}}>
+            <Text style={{ fontFamily: "outfit-medium" }}>Output</Text>
+            <RenderHTML
+              contentWidth={width}
+              source={outputSource}
+              tagsStyles={outputStyles}
+            />
+          </View>
+        ) : null}
       </View>
     )
   );

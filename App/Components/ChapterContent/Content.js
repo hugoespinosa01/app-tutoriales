@@ -1,5 +1,5 @@
 import { View, Text, FlatList, Dimensions } from "react-native";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import ContentItem from "./ContentItem";
@@ -23,18 +23,25 @@ export default function Content({ content, onChapterFinish }) {
   };
 
   return (
-    <View style={{ padding: 0, height: "100%" }}>
+    <View style={{ height: "100%" }}>
       <ProgressBar contentLength={content?.length} contentIndex={activeIndex} />
-        <FlatList
-          data={content}
-          horizontal={true}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          ref={(ref) => (contentRef = ref)}
-          renderItem={({ item, index }) => (
-            <View
-              style={{ width: Dimensions.get("screen").width, padding: 20 }}
-              key={index}
+      <FlatList
+        data={content}
+        horizontal={true}
+        pagingEnabled={true}
+        showsHorizontalScrollIndicator={false}
+        ref={(ref) => (contentRef = ref)}
+        renderItem={({ item, index }) => (
+          <View
+            style={{ width: Dimensions.get("screen").width, padding: 20 }}
+            key={index}
+          >
+            <ScrollView
+              style={{
+                width: Dimensions.get("screen").width,
+                padding: 10,
+                marginBotton: 40,
+              }}
             >
               <Text
                 style={{
@@ -49,25 +56,26 @@ export default function Content({ content, onChapterFinish }) {
                 description={item?.description?.html}
                 output={item?.output?.html}
               />
-              <TouchableOpacity onPress={() => onNextBtnPress(index)}>
-                <Text
-                  style={{
-                    padding: 15,
-                    color: Colors.WHITE,
-                    textAlign: "center",
-                    borderRadius: 10,
-                    fontFamily: "outfit",
-                    fontSize: 17,
-                    backgroundColor: Colors.PRIMARY,
-                    marginTop: 20,
-                  }}
-                >
-                  {content?.length <= index + 1 ? "Finalizar" : "Siguiente"}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+            </ScrollView>
+
+            <TouchableOpacity onPress={() => onNextBtnPress(index)}>
+              <Text
+                style={{
+                  padding: 15,
+                  color: Colors.WHITE,
+                  textAlign: "center",
+                  borderRadius: 10,
+                  fontFamily: "outfit",
+                  fontSize: 17,
+                  backgroundColor: Colors.PRIMARY,
+                }}
+              >
+                {content?.length <= index + 1 ? "Finalizar" : "Siguiente"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      />
     </View>
   );
 }

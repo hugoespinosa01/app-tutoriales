@@ -31,7 +31,12 @@ export default function CourseProgress() {
         color={Colors.WHITE}
       ></SubHeading>  
 
-       <FlatList
+      <View
+        style={{
+          marginBottom: 25
+        }}
+
+      ><FlatList
         data={progressCourseList}
         key={progressCourseList?.id}
         horizontal={true}
@@ -43,7 +48,8 @@ export default function CourseProgress() {
             <CourseItem item={item.course} completedChapter={item?.completedChapter?.length} />
           </TouchableOpacity>
         )}
-      />
+      /></View>
+       
     </View>
   )
 }
