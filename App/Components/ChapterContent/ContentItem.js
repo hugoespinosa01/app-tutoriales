@@ -9,6 +9,8 @@ import RenderHTML from "react-native-render-html";
 import Colors from "../../Utils/Colors";
 
 export default function ContentItem({ description, output }) {
+  
+  const [isRun, setRun] = React.useState(false);
   const { width } = useWindowDimensions();
   const descriptionSource = {
     html: description,
@@ -26,7 +28,7 @@ export default function ContentItem({ description, output }) {
           tagsStyles={tagStyles}
         />
         {output != null ? (
-          <TouchableOpacity style={{ marginTop: -20, marginBottom: 20 }}>
+          <TouchableOpacity onPress={() => setRun(true)} style={{ marginTop: -20, marginBottom: 20 }}>
             <Text
               style={{
                 padding: 10,
@@ -44,12 +46,12 @@ export default function ContentItem({ description, output }) {
         ) : null}
 
 
-          <Text style={{fontFamily: 'outfit-medium'}}>Output</Text>
+        {isRun ? <> <Text style={{fontFamily: 'outfit-medium'}}>Output</Text>
           <RenderHTML
             contentWidth={width}
             source={outputSource}
             tagsStyles={outputStyles}
-          />
+          /> </> : null}
       </View>
     )
   );
@@ -62,7 +64,7 @@ const tagStyles = {
   },
   code: {
     backgroundColor: Colors.BLACK,
-    colors: Colors.WHITE,
+    color: Colors.WHITE,
     padding: 20,
     borderRadius: 15,
   },
@@ -79,7 +81,7 @@ const outputStyles = {
   },
   code: {
     backgroundColor: Colors.BLACK,
-    colors: Colors.WHITE,
+    color: Colors.WHITE,
     padding: 20,
     borderRadius: 15,
   },

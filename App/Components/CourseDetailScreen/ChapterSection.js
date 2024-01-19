@@ -1,12 +1,27 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, ToastAndroid } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../Utils/Colors";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ChapterSection({ chapterList }) {
+export default function ChapterSection({ chapterList, userEnrolledCourse}) {
+  
+  const navigation = useNavigation();
   chapterList.map((i) => {
     console.log("titulo", i.title);
   });
+
+  const OnChapterPress = (content) => {
+    if(userEnrolledCourse.length === 0){
+      ToastAndroid.show("Por favor, primero inscríbete al curso", ToastAndroid.LONG);
+      return;
+    }
+    else{
+      navigation.navigate("chapter-content", {
+        content: content,
+      });
+    }
+  }
 
   return (
     <View
@@ -22,7 +37,8 @@ export default function ChapterSection({ chapterList }) {
       </Text>
 
       {chapterList.map((item, index) => (
-        <View
+        <TouchableOpacity
+        onPress={() => OnChapterPress(item.content)}
         key={index}
         style={{
             display: "flex",
@@ -56,13 +72,13 @@ export default function ChapterSection({ chapterList }) {
               {index + 1}
             </Text>
             <Text
-              style={{ fontFamily: "outfit", fontSize: 21, color: Colors.GRAY }}
+              style={{ fontFamily: "outfit", fontSize: 18, color: Colors.GRAY, marginLeft: 10 }}
             >
               {item.title}
             </Text>
           </View>
-          <Ionicons name="md-lock-closed" size={25} color={Colors.GRAY} />
-        </View>
+         {userEnrolledCourse.length === 0 ?  <Ionicons name="md-lock-closed" size={25} color={Colors.GRAY} /> :  <Ionicons name="play" size={25} color={Colors.GRAY} />}
+        </TouchableOpacity>
       ))}
     </View>
   );

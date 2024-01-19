@@ -51,7 +51,7 @@ export default function CourseDetailScreen() {
             course={params.course}
             userEnrolledCourse = {userEnrolledCourse}
             enrollCourse={UserEnrollCourse}/>
-      <ChapterSection chapterList={params?.course?.chapters}/>
+      <ChapterSection chapterList={params?.course?.chapters} userEnrolledCourse={userEnrolledCourse}/>
     </ScrollView>
 
     
