@@ -59,7 +59,7 @@ export default function LoginScreen() {
           style={{
             textAlign: "center",
             fontSize: 20,
-            color: Colors.LIGHT_PRIMARY,
+            color: Colors.WHITE,
             fontFamily: "outfit",
             marginTop: 10,
           }}

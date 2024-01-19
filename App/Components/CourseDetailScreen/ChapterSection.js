@@ -5,16 +5,12 @@ import Colors from "../../Utils/Colors";
 import { useNavigation } from "@react-navigation/native";
 import { CompleteChapterContext } from "../../Context/CompleteChapterContext";
 
-export default function ChapterSection({ chapterList,
-   userEnrolledCourse}) {
+export default function ChapterSection({ chapterList, userEnrolledCourse}) {
 
     const {ischapterComplete,setIsChapterComplete}
     =useContext(CompleteChapterContext);
   const navigation = useNavigation();
 
-  chapterList.map((i) => {
-    console.log("titulo", i.title);
-  });
   const OnChapterPress = (chapter) => {
     if(userEnrolledCourse.length === 0){
       ToastAndroid.show("Por favor, primero inscríbete al curso", ToastAndroid.LONG);
@@ -40,7 +36,9 @@ export default function ChapterSection({ chapterList,
     
     return resp;
   }
-  return chapterList&&(
+
+
+  return chapterList && (
     <View
       style={{
         padding: 10,
@@ -60,7 +58,7 @@ export default function ChapterSection({ chapterList,
         key={index}
         style={[checkIsChapterCompleted(item.id)
         ?styles.CompleteChapter
-        :styles.inCompleteChapter]}
+        :styles.inCompleteChapter]} 
         onPress={() => OnChapterPress(item)}>
           
           <View style={{display:'flex',flexDirection:'row',
