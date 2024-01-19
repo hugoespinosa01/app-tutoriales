@@ -4,7 +4,6 @@ import React from 'react'
 import HomeScreen from '../Screen/HomeScreen';
 import MyCourse from '../Screen/MyCourse';
 import LeaderBoard from '../Screen/LeaderBoard';
-import ProfileScreen from '../Screen/ProfileScreen';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -34,13 +33,6 @@ export default function TabNavigation() {
       options={{
         tabBarIcon:({color, size})=>(
           <MaterialIcons name="leaderboard" size={size} color={color} />
-        )
-        }}/>
-
-      <Tab.Screen name='Perfil' component={ProfileScreen} 
-      options={{
-        tabBarIcon:({color, size})=>(
-          <MaterialIcons name="supervised-user-circle" size={size} color={color} />
         )
         }}/>
     </Tab.Navigator>

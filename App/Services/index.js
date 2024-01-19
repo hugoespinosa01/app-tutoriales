@@ -86,7 +86,7 @@ export const getUserEnrolledCourse = async (courseId, userEmail) => {
   return result;
 };
 
-export const MarkChapterCompleted = async (chapterId,recordId) => {
+export const MarkChapterCompleted = async (chapterId,recordId, userEmail, totalPoints) => {
   const mutationQuery = gql`
   mutation markChapterCompleted {
     updateUserEnrolledCourse(
@@ -111,7 +111,7 @@ export const MarkChapterCompleted = async (chapterId,recordId) => {
 export const createNewUser = async (userName, email, profileImageUrl) => {
   const mutationQuery = gql`
     mutation CreateNewUser {
-      upsetUserDetail(
+      upsertUserDetail(
         upsert: {create:
           {email: "`+email+`",
           point: 10,
@@ -173,6 +173,22 @@ export const GetAllProgressCourse = async (userEmail) => {
       }
     }
   `;
+  const result = await request(MASTER_URL, query);
+  return result;
+}
+
+export const GetAllUsers = async () => {
+  const query = gql `
+    query GetAllUsers {
+      userDetails(orderBy: point_DESC) {
+        id
+        profileImage
+        userName
+        point
+      }
+    }
+  `;
+
   const result = await request(MASTER_URL, query);
   return result;
 }

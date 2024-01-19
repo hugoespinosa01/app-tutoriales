@@ -25,7 +25,7 @@ export default function CourseList({ level }) {
     <View style={{marginTop:10}}>
       <SubHeading
         text={level}
-        color={level === "Principiante" && Colors.WHITE}
+        color={level === "Principiante"}
       ></SubHeading>
       <FlatList
         data={courseList}

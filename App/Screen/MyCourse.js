@@ -43,7 +43,7 @@ export default function MyCourse() {
       </View>
       <FlatList
         data={progressCourseList}
-        style={{ marginTop: -50 }}
+        style={{ marginTop: -60 }}
         key={progressCourseList?.id}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
@@ -56,6 +56,7 @@ export default function MyCourse() {
             }
           >
             <CourseProgressItem
+              isOtherTab={true}
               item={item.course}
               completedChapter={item?.completedChapter?.length}
             />

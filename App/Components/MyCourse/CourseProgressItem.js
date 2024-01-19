@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from '../../Utils/Colors';
 import CourseProgressBar from '../HomeScreen/CourseProgressBar';
 
-export default function CourseProgressItem({item, completedChapter}) {
+export default function CourseProgressItem({item, completedChapter, isOtherTab}) {
     return (
         <View
         style={{
@@ -16,7 +16,7 @@ export default function CourseProgressItem({item, completedChapter}) {
       >
         <Image
           source={{ uri: item?.banner?.url }}
-          style={{ width: 100, height: 170 }}
+          style={isOtherTab ? { width: '100%', height: 170 } : { width: 150, height: 200 }}
         ></Image>
         <View style={{ padding: 7 }}>
           <Text
