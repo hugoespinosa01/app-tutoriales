@@ -61,15 +61,39 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
         :styles.inCompleteChapter]} 
         onPress={() => OnChapterPress(item)}>
           
-          <View style={{display:'flex',flexDirection:'row',
-            alignItems:'center',gap:10}}>
-             {checkIsChapterCompleted(item.id)?
-             <Ionicons name="checkmark-circle" size={30} color={Colors.GREEN}/>
-             :  <Text style={{fontFamily:'outfit-medium',
-            fontSize:27,color:Colors.GRAY}}>{index+1}</Text>}
-                <Text style={{fontFamily:'outfit',
-            fontSize:21,color:Colors.GRAY}}>{item?.title}</Text>
-            </View>
+          <View
+  style={{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  }}
+>
+  {checkIsChapterCompleted(item.id) ? (
+    <Ionicons name="checkmark-circle" size={30} color={Colors.GREEN} />
+  ) : (
+    <Text
+      style={{
+        fontFamily: 'outfit-medium',
+        fontSize: 27 - item?.title.length * 0.5, // Ajusta según tus necesidades
+        color: Colors.GRAY,
+      }}
+    >
+      {index + 1}
+    </Text>
+  )}
+  <Text
+    style={{
+      flex: 0.9, // Este estilo hace que el texto ocupe todo el espacio disponible
+      fontFamily: 'outfit',
+      fontSize: 21,
+      color: Colors.GRAY,
+    }}
+  >
+    {item?.title}
+  </Text>
+</View>
+
             
          {userEnrolledCourse.length === 0 ?
            <Ionicons name="md-lock-closed" size={25} color={Colors.GRAY} /> 

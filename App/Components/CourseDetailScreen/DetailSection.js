@@ -15,7 +15,7 @@ export default function DetailSection({ course, userEnrolledCourse, enrollCourse
       <Image
         source={{ uri: course?.banner?.url }}
         style={{
-          width: Dimensions.get("screen").width * 0.9,
+          width: Dimensions.get("screen").width * 0.85,
           height: 190,
           borderRadius: 15,
         }}
@@ -58,7 +58,8 @@ export default function DetailSection({ course, userEnrolledCourse, enrollCourse
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-evenly",
-            gap: 20,
+            gap: 50,
+            marginHorizontal: 30,
           }}
         >
           {userEnrolledCourse?.length === 0 ? (
@@ -75,7 +76,7 @@ export default function DetailSection({ course, userEnrolledCourse, enrollCourse
                   fontFamily: "outfit",
                   color: Colors.WHITE,
                   textAlign: "center",
-                  fontSize: 17,
+                  fontSize: 16,
                 }}
               >
                 Inscribirse gratis
@@ -94,7 +95,7 @@ export default function DetailSection({ course, userEnrolledCourse, enrollCourse
                 fontFamily: "outfit",
                 color: Colors.WHITE,
                 textAlign: "center",
-                fontSize: 17,
+                fontSize: 16,
               }}
             >
               Membresia $2.99/Mes
