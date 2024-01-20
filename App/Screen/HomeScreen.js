@@ -82,14 +82,6 @@ export default function HomeScreen() {
         </View>
         <CourseList level={"Avanzado"}></CourseList>
       </View>
-
-        <View style={{ marginTop: 5, padding: 15 , backgroundColor: Colors.PRIMARY, width: 180, marginLeft: 20, borderRadius: 20}}>
-          <TouchableOpacity onPress={() => signOut()}>
-            <View style={{ alignItems: 'center'}}>
-              <Text style={{fontFamily: 'outfit-medium', fontSize: 18, color: Colors.WHITE}}>Cerrar Sesión</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
     </ScrollView>
   );
 }
