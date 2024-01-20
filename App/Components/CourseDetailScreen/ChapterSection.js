@@ -75,7 +75,7 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
     <Text
       style={{
         fontFamily: 'outfit-medium',
-        fontSize: 27 - item?.title.length * 0.5, // Ajusta según tus necesidades
+        fontSize: 27, 
         color: Colors.GRAY,
       }}
     >
@@ -84,7 +84,7 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
   )}
   <Text
     style={{
-      flex: 0.9, // Este estilo hace que el texto ocupe todo el espacio disponible
+      flex: 0.9, 
       fontFamily: 'outfit',
       fontSize: 21,
       color: Colors.GRAY,

@@ -1,13 +1,27 @@
 import { View, Text, Image, StyleSheet, TextInput} from 'react-native'
-import React from 'react'
+import React ,{useState,useEffect}from 'react';
 import { useUser } from '@clerk/clerk-expo'
 import Colors from '../../Utils/Colors';
 import Coin from './../../../assets/images/coin.png'
 import { Ionicons } from '@expo/vector-icons';
+import { getUserDetail } from '../../Services';
+
 
 export default function Header() {
     const {isLoaded, isSignedIn,user}=useUser();
-  return isLoaded&&(
+    const [userPoints, setUserPoints] = useState();
+
+    useEffect(() => {
+        user && GetUserDetail();
+      }, [user]);
+    
+    const GetUserDetail = () => {
+        getUserDetail(user.primaryEmailAddress.emailAddress).then((res) => {
+          setUserPoints(res?.point);
+        });
+      };
+  
+    return isLoaded&&(
     <View>
     <View style={[{justifyContent:'space-between'},styles.rowStyle]}>
         <View style={styles.rowStyle}>
@@ -20,7 +34,7 @@ export default function Header() {
         </View>
         <View style={styles.rowStyle}>
             <Image source={Coin} style={{width:35,height:35}}/>
-            <Text style={styles.mainHeader}>3580</Text>
+            <Text style={styles.mainHeader}>{userPoints}</Text>
         </View>
     </View>
     <View style={{backgroundColor:Colors.WHITE,paddingLeft:20,
