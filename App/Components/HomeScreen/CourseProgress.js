@@ -24,7 +24,7 @@ export default function CourseProgress() {
     });
   }
 
-  return (
+  return progressCourseList && (
     <View>
       <SubHeading
         text={'En progreso'}

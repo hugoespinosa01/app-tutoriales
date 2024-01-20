@@ -7,7 +7,6 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Colors from "../../Utils/Colors";
 
 export default function Content({ content, onChapterFinish }) {
-  console.log(content[0].description);
 
   let contentRef;
   const navigation = useNavigation();
@@ -64,7 +63,7 @@ export default function Content({ content, onChapterFinish }) {
                   padding: 15,
                   color: Colors.WHITE,
                   textAlign: "center",
-                  borderRadius: 10,
+                  borderRadius: 15,
                   fontFamily: "outfit",
                   fontSize: 17,
                   backgroundColor: Colors.PRIMARY,

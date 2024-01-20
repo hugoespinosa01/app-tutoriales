@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import Colors from "../../Utils/Colors.js";
 import { getCourseList } from "../../Services";
 
-export default function CourseList({ level }) {
+export default function CourseList({ level, courseProgressList=[] }) {
   const [courseList, setCourseList] = useState([]);
   const navigation = useNavigation();
 
@@ -16,16 +16,17 @@ export default function CourseList({ level }) {
 
   const getCourses = () => {
     getCourseList(level).then(resp => {
-      console.log("RESP--",resp)
        setCourseList(resp?.courses);
     })
   };
+
+  console.log("courselist", courseList);
 
   return (
     <View style={{marginTop:10}}>
       <SubHeading
         text={level}
-        color={level === "Principiante"}
+        color={courseProgressList.length > 0 ? Colors.BLACK : level === 'Avanzado' ? Colors.BLACK : Colors.WHITE}
       ></SubHeading>
       <FlatList
         data={courseList}

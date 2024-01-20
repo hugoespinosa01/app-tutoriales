@@ -102,6 +102,15 @@ export const MarkChapterCompleted = async (chapterId,recordId, userEmail, totalP
         }
       }
     }
+
+    updateUserDetail(where: {email: "`+userEmail+`"},
+    data: {point: `+totalPoints+`}) {
+      point
+    }
+    publishUserDetail(where: {email: "`+userEmail+`"}){
+      id
+    }
+  
   }
   `
   const result = await request(MASTER_URL, mutationQuery);
@@ -160,6 +169,18 @@ export const GetAllProgressCourse = async (userEmail) => {
           }
           chapters {
             id
+            title
+            content {
+              heading
+              description {
+                markdown
+                html
+              }
+              output {
+                markdown
+                html
+              }
+            }
           }
           description {
             markdown

@@ -28,6 +28,7 @@ useEffect(() => {
   useEffect(() => {
     ischapterComplete&&GetUserEnrolledCourse();
   },[ischapterComplete])
+  
   const UserEnrollCourse = () => {
     enrollCourse(params?.course.id, user?.primaryEmailAddress?.emailAddress)
     .then(resp => {

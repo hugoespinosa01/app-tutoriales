@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ToastAndroid, StyleSheet } from "react-native";
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../Utils/Colors";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +9,9 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
 
     const {ischapterComplete,setIsChapterComplete}
     =useContext(CompleteChapterContext);
+
   const navigation = useNavigation();
+  
 
   const OnChapterPress = (chapter) => {
     if(userEnrolledCourse.length === 0){
@@ -37,7 +39,6 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
     return resp;
   }
 
-
   return chapterList && (
     <View
       style={{
@@ -54,7 +55,6 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
 
       {chapterList.map((item, index) => (
         <TouchableOpacity
-
         key={index}
         style={[checkIsChapterCompleted(item.id)
         ?styles.CompleteChapter
@@ -68,7 +68,7 @@ export default function ChapterSection({ chapterList, userEnrolledCourse}) {
              :  <Text style={{fontFamily:'outfit-medium',
             fontSize:27,color:Colors.GRAY}}>{index+1}</Text>}
                 <Text style={{fontFamily:'outfit',
-            fontSize:21,color:Colors.GRAY}}>{item.title}</Text>
+            fontSize:21,color:Colors.GRAY}}>{item?.title}</Text>
             </View>
             
          {userEnrolledCourse.length === 0 ?

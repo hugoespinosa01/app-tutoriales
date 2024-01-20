@@ -7,6 +7,7 @@ import { StyleSheet } from "react-native";
 
 export default function DetailSection({ course, userEnrolledCourse, enrollCourse}){ 
 
+
   return (
     <View
       style={{ padding: 10, borderRadius: 15, backgroundColor: Colors.WHITE }}

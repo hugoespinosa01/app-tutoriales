@@ -15,7 +15,6 @@ export default function LeaderBoard() {
 
   const GetAllUserDetails = () => {
     GetAllUsers().then((resp) => {
-      console.log(resp);
       setUserList(resp.userDetails);
     });
   };

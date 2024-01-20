@@ -5,6 +5,7 @@ import Colors from "../../Utils/Colors";
 import CourseProgressBar from "./CourseProgressBar";
 
 export default function CourseItem({ item, completedChapter }) {
+
   return (
     <View
       style={{
@@ -25,7 +26,7 @@ export default function CourseItem({ item, completedChapter }) {
             fontSize: 17,
           }}
         >
-          {item.name}
+          {item?.name}
         </Text>
         <View
           style={{
@@ -68,7 +69,7 @@ export default function CourseItem({ item, completedChapter }) {
             fontFamily: "outfit-medium",
           }}
         >
-          {item.free === 0 ? "Gratis" : item.price}
+          {item?.free === 0 ? "Gratis" : item?.price}
         </Text>
         {completedChapter !== undefined ? (
           <CourseProgressBar
