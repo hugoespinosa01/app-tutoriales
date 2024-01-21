@@ -21,6 +21,7 @@ export default function HomeScreen() {
   const { userPoints, setUserPoints } = useContext(UserPointsContext);
   const [courseProgressList, setCourseProgressList] = React.useState();
 
+
   useEffect(() => {
     user && createUser();
     GetCourses();
@@ -55,14 +56,14 @@ export default function HomeScreen() {
   return (
     <ScrollView>
       <View
-        style={{ backgroundColor: Colors.PRIMARY, height: 250, padding: 20 }}
+        style={{ backgroundColor: Colors.PRIMARY, height: 250, padding: 20, paddingTop: 30}}
       >
         <Header />
       </View>
 
       {courseProgressList?.length > 0 && (
         <View style={{ padding: 20, paddingTop: 10 }}>
-          <View style={{ marginTop: -90 }}></View>
+          <View style={{ marginTop: -80 }}></View>
           <CourseProgress></CourseProgress>
         </View>
       )}
