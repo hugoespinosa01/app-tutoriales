@@ -32,7 +32,7 @@ export default function Content({ content, onChapterFinish }) {
         ref={(ref) => (contentRef = ref)}
         renderItem={({ item, index }) => (
           <View
-            style={{ width: Dimensions.get("screen").width, padding: 20 }}
+            style={{ width: Dimensions.get("screen").width, padding: 10 }}
             key={index}
           >
             <ScrollView

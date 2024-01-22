@@ -26,7 +26,7 @@ export default function ContentItem({ description, output }) {
           source={descriptionSource}
           tagsStyles={tagStyles}
         />
-        {output != null ? (
+        {/* {output != null ? (
           <TouchableOpacity
             onPress={() => setRun(true)}
             style={{ marginTop: 10, marginBottom: 10 }}
@@ -46,9 +46,9 @@ export default function ContentItem({ description, output }) {
               Run
             </Text>
           </TouchableOpacity>
-        ) : null}
+        ) : null} */}
 
-        {isRun ? (
+        {/* {isRun ? (
           <View style={{padding: 15}}>
             <Text style={{ fontFamily: "outfit-medium" }}>Output</Text>
             <RenderHTML
@@ -57,7 +57,7 @@ export default function ContentItem({ description, output }) {
               tagsStyles={outputStyles}
             />
           </View>
-        ) : null}
+        ) : null} */}
       </View>
     )
   );
