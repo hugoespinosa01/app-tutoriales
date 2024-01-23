@@ -55,9 +55,7 @@ export default function Content({ content, onChapterFinish }) {
                 description={item?.description?.html}
                 output={item?.output?.html}
               />
-            </ScrollView>
-
-            <TouchableOpacity onPress={() => onNextBtnPress(index)}>
+              <TouchableOpacity onPress={() => onNextBtnPress(index)}>
               <Text
                 style={{
                   padding: 15,
@@ -72,6 +70,9 @@ export default function Content({ content, onChapterFinish }) {
                 {content?.length <= index + 1 ? "Finalizar" : "Siguiente"}
               </Text>
             </TouchableOpacity>
+            </ScrollView>
+
+            
           </View>
         )}
       />
