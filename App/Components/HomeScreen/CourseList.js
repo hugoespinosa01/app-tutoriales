@@ -20,8 +20,6 @@ export default function CourseList({ level, courseProgressList=[] }) {
     })
   };
 
-  console.log("courselist", courseList);
-
   return (
     <View style={{marginTop:10}}>
       <SubHeading

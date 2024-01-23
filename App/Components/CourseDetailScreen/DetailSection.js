@@ -1,12 +1,24 @@
-import { View, Image, Dimensions, Text } from "react-native";
+import { View, Image, Dimensions, Text, ToastAndroid } from "react-native";
 import React from "react";
 import Colors from "../../Utils/Colors";
 import OptionItem from "./OptionItem";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
+import { deleteManyUserEnrolledCoursesConnection } from "../../Services";
+import { useUser } from "@clerk/clerk-expo";
 
 export default function DetailSection({ course, userEnrolledCourse, enrollCourse}){ 
 
+  const {user} = useUser();
+
+  const pullOutCourse = () => {
+    deleteManyUserEnrolledCoursesConnection(userEnrolledCourse[0].courseId, user.primaryEmailAddress.emailAddress).then((res) => {
+      if(res){
+        ToastAndroid.show("Dado de baja exitosamente", ToastAndroid.LONG);
+        enrollCourse();
+      }
+    })
+  }
 
   return (
     <View
@@ -98,9 +110,32 @@ export default function DetailSection({ course, userEnrolledCourse, enrollCourse
                 fontSize: 16,
               }}
             >
-              Membresia $2.99/Mes
+              Membresía $2.99/Mes
             </Text>
           </TouchableOpacity>
+          {
+            userEnrolledCourse?.length > 0 ? (
+              <TouchableOpacity
+                onPress={() => pullOutCourse()}
+                style={{
+                  padding: 12,
+                  backgroundColor: Colors.GRAY,
+                  borderRadius: 15,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "outfit",
+                    color: Colors.WHITE,
+                    textAlign: "center",
+                    fontSize: 16,
+                  }}
+                >
+                  Darse de baja
+                </Text>
+              </TouchableOpacity>
+            ) : null
+          }
         </View>
       </View>
     </View>
